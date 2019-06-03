@@ -1,55 +1,55 @@
 surgtype ,dayofweek,num.sda,num.sdc
-Ortho ,Mon,3,2
-Neuro,Mon,2,1
-Urol,Mon,1,3
-Gyne,Mon,1,2
-Gen.surge,Mon,1,4
+Ortho ,Mon,54,0
+Neuro,Mon,0,0
+Urol,Mon,0,0
+Gyne,Mon,0,0
+Gen.surge,Mon,0,0
 Dental ,Mon,0,0
 Gastro,Mon,0,0
 Otolaryngology ,Mon,0,0
-Plastic,Mon,1,3
+Plastic,Mon,0,0
 Vascular,Mon,0,0
-Ortho ,Tue,4,4
-Neuro,Tue,2,1
+Ortho ,Tue,54,0
+Neuro,Tue,0,0
 Urol,Tue,0,0
-Gyne,Tue,1,2
-Gen.surge,Tue,2,8
+Gyne,Tue,0,0
+Gen.surge,Tue,0,0
 Dental ,Tue,0,0
 Gastro,Tue,0,0
-Otolaryngology ,Tue,1,2
+Otolaryngology ,Tue,0,0
 Plastic,Tue,0,0
 Vascular,Tue,0,0
-Ortho ,Wed,4,3
-Neuro,Wed,2,1
-Urol,Wed,2,4
-Gyne,Wed,1,2
-Gen.surge,Wed,1,2
+Ortho ,Wed,54,0
+Neuro,Wed,0,0
+Urol,Wed,0,0
+Gyne,Wed,0,0
+Gen.surge,Wed,0,0
 Dental ,Wed,0,0
 Gastro,Wed,0,0
-Otolaryngology ,Wed,1,3
+Otolaryngology ,Wed,0,0
 Plastic,Wed,0,0
 Vascular,Wed,0,0
-Ortho ,Thu,4,4
-Neuro,Thu,2,1
+Ortho ,Thu,54,0
+Neuro,Thu,0,0
 Urol,Thu,0,0
-Gyne,Thu,2,2
-Gen.surge,Thu,2,9
+Gyne,Thu,0,0
+Gen.surge,Thu,0,0
 Dental ,Thu,0,0
 Gastro,Thu,0,0
 Otolaryngology ,Thu,0,0
-Plastic,Thu,1,2
+Plastic,Thu,0,0
 Vascular,Thu,0,0
-Ortho ,Fri,2,4
-Neuro,Fri,2,1
-Urol,Fri,2,3
-Gyne,Fri,0,3
-Gen.surge,Fri,1,4
+Ortho ,Fri,54,0
+Neuro,Fri,0,0
+Urol,Fri,0,0
+Gyne,Fri,0,0
+Gen.surge,Fri,0,0
 Dental ,Fri,0,0
 Gastro,Fri,0,0
-Otolaryngology ,Fri,1,2
+Otolaryngology ,Fri,0,0
 Plastic,Fri,0,0
 Vascular,Fri,0,0
-Ortho ,Sat,0,0
+Ortho ,Sat,33,0
 Neuro,Sat,0,0
 Urol,Sat,0,0
 Gyne,Sat,0,0
@@ -59,7 +59,7 @@ Gastro,Sat,0,0
 Otolaryngology ,Sat,0,0
 Plastic,Sat,0,0
 Vascular,Sat,0,0
-Ortho ,Sun,0,0
+Ortho ,Sun,33,0
 Neuro,Sun,0,0
 Urol,Sun,0,0
 Gyne,Sun,0,0
