@@ -18,7 +18,8 @@ library("magrittr")
 numweeks.param <-  48
 iterations.param <- 10
 warmup.cutoff.day.num <- 50
-input.schedule <- "admissions-weekly-schedule_1_pre-diversion.csv"
+input.schedule.1 <- "admissions-weekly-schedule_1_pre-diversion.csv"
+input.schedule.2 <- "admissions-weekly-schedule_2_post-diversion.csv"
 
 # ouput label: 
 # If you're trying out several different schedules, you can 
