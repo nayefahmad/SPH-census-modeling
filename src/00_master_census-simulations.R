@@ -45,7 +45,7 @@ sims <- simulate.census(iterations = iterations.param)
 # sim.graphs(sims, ymax = 200)
 
 # save plots in a list: 
-plots.list <- sim.graphs(sims, ymax = 500)
+plots.list <- sim.graphs(sims, ymax = 950)
 
 
 # calculate averages by dow: ------------------------

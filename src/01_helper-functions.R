@@ -11,7 +11,7 @@ census.in.surgery <- function(horizon = 100,
                            day.number, 
                            surg.type, 
                            num.patients, 
-                           surgery.los.dist = df3.los.distributions){
+                           surgery.los.dist = df7.los.distributions){
       
       # inputs: 
       # > horizon specifies the length of output vectors 
@@ -52,7 +52,7 @@ census.in.surgery <- function(horizon = 100,
       # iterate over patients to fill the list: 
       for (i in 1:num.patients) {
             # find appropriate surgery
-            surg.los <- filter(df3.los.distributions, 
+            surg.los <- filter(df7.los.distributions, 
                                 variable == glue({surg.type}))
             
             # how many nights in census? Based on historical los distribution
@@ -249,9 +249,9 @@ repeat.rows <- function(df,
 # function definition: 
 simulate.census <- function(iterations = 2, 
                             horizon = 600, 
-                            day.number = df4.full.input.schedule$day.number, 
-                            surg.type = as.character(df4.full.input.schedule$surgtype), 
-                            num.patients = df4.full.input.schedule$num.sda) {
+                            day.number = df5.full.input.schedule$day.number, 
+                            surg.type = as.character(df5.full.input.schedule$surgtype), 
+                            num.patients = df5.full.input.schedule$num.sda) {
   # input: 
   #     > number of iterations 
   #     > other arguments set to defaults, to be passed to census.in.surgery() 
