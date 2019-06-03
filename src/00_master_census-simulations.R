@@ -18,7 +18,7 @@ library("magrittr")
 numweeks.param <-  48
 iterations.param <- 10
 warmup.cutoff.day.num <- 50
-input.schedule <- "surgery-weekly-schedule.csv"
+input.schedule <- "admissions-weekly-schedule_1_pre-diversion.csv"
 
 # ouput label: 
 # If you're trying out several different schedules, you can 
@@ -44,7 +44,7 @@ sims <- simulate.census(iterations = iterations.param)
 # sim.graphs(sims, ymax = 200)
 
 # save plots in a list: 
-plots.list <- sim.graphs(sims, ymax = 50)
+plots.list <- sim.graphs(sims, ymax = 500)
 
 
 # calculate averages by dow: ------------------------
@@ -69,7 +69,7 @@ p1.avg.by.dow <-
                  y = daily.avg.census)) + 
       geom_bar(stat = "identity", 
                fill = "dodgerblue3") + 
-      scale_y_continuous(limits = c(0,35)) + 
+      scale_y_continuous(limits = c(0,500)) + 
       labs(title = "Average census in surgery units by day of week", 
            subtitle = paste0("Based on ",
                              iterations.param, 

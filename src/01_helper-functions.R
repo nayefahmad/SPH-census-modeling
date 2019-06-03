@@ -298,7 +298,7 @@ simulate.census <- function(iterations = 2,
 #*******************************************************
 
 sim.graphs <- function(sim.list, 
-                       ymax = 75, 
+                       ymax = 200, 
                        xmax = 7*numweeks.param + 14) {
   
   # input: single vector from a list of lots of simulations produced by 
