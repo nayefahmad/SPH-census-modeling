@@ -16,7 +16,7 @@ library("magrittr")
 
 # input paramaters: 
 numweeks.param <-  48
-iterations.param <- 2
+iterations.param <- 100
 warmup.cutoff.day.num <- 50
 input.schedule.1 <- "admissions-weekly-schedule_1_pre-diversion.csv"
 input.schedule.2 <- "admissions-weekly-schedule_2_post-diversion.csv"
@@ -49,41 +49,7 @@ plots.list <- sim.graphs(sims, ymax = 750)
 
 
 # examine changeover from pre-intervention to post-intervention: -----
-iteration.num <- 1
-
-pre_mean_census <- sims[[iteration.num]][50:(7*numweeks.param)] %>% mean
-post_mean_census <- sims[[iteration.num]][(7*numweeks.param+1):(7*2*numweeks.param)] %>% mean
-
-post_mean_census/pre_mean_census
-
-
-# plot: 
-data.frame(census = sims[[iteration.num]]) %>% 
-  mutate(day = 1:n()) %>%  
-  filter(day > 200, day < 500) %>% 
-  
-  ggplot(aes(x = day, y = census)) + 
-  geom_line() + 
-  geom_point() +
-  geom_vline(xintercept = 336, 
-             col = "red") + 
-  geom_hline(yintercept = pre_mean_census, 
-             col = "grey70") + 
-  geom_hline(yintercept = post_mean_census, 
-             col = "grey70") + 
-  
-  labs(subtitle = paste0("Mean census pre-intervention: ", 
-                         round(pre_mean_census, 2),  
-                         "\nMean census post-intervention: ", 
-                         round(post_mean_census, 2), 
-                         "\nReduction of ", 
-                         (1 - post_mean_census/pre_mean_census) %>% round(2) * 100, 
-                         "%")) + 
-  
-  theme_light() +
-  theme(panel.grid.minor = element_line(colour = "grey95"), 
-      panel.grid.major = element_line(colour = "grey95"))
-      
+plots.list.2 <- changeover.graph(sims, xmin = 300, xmax = 600)
            
 
 
@@ -134,6 +100,14 @@ pdf(here("results",
          as.character(glue("simulations_schedule-{schedule.num}.pdf"))), 
     width = 10)
 plots.list[1:iterations.param]
+dev.off()
+
+
+pdf(here("results", 
+         "dst", 
+         as.character(glue("changeover_schedule-{schedule.num}.pdf"))), 
+    width = 10)
+plots.list.2[1:iterations.param]
 dev.off()
 
 

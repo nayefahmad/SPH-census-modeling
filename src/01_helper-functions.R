@@ -363,3 +363,69 @@ sim.graphs <- function(sim.list,
 # test the function: 
 #****************************************************************
 # sim.graphs(sims[1:10], ymax = 200)
+
+
+
+
+#*************************************************************
+# FUNCTION to graph changeover from pre- to post- schedule 
+#*************************************************************
+changeover.graph <- function(sims, 
+                             xmin = 200, 
+                             xmax = 500 ,
+                             ymax = 500){
+  # input: "sim" is a list, the output of the function simulate.census()
+  
+  # output: a ggplot graph 
+  
+  plots.list <- list()
+  for (i in 1:length(sims)){
+    
+    pre_mean_census <- sims[[i]][50:(7*numweeks.param)] %>% mean
+    post_mean_census <- sims[[i]][(7*numweeks.param+1):(7*2*numweeks.param)] %>% mean
+    
+    ratio <- post_mean_census/pre_mean_census
+    
+    # plot: 
+    plot <- 
+      data.frame(census = sims[[i]]) %>% 
+      mutate(day = 1:n()) %>%  
+      filter(day > xmin, day < xmax) %>% 
+      
+      ggplot(aes(x = day, y = census)) + 
+      geom_line() + 
+      geom_point() +
+      
+      scale_y_continuous(limits = c(250, ymax)) + 
+      
+      geom_vline(xintercept = 336, 
+                 col = "red") + 
+      geom_hline(yintercept = pre_mean_census, 
+                 col = "grey70") + 
+      geom_hline(yintercept = post_mean_census, 
+                 col = "grey70") + 
+      
+      labs(subtitle = paste0("Mean census pre-intervention: ", 
+                             round(pre_mean_census, 2),  
+                             "\nMean census post-intervention: ", 
+                             round(post_mean_census, 2), 
+                             "\nReduction of ", 
+                             (1 - post_mean_census/pre_mean_census) %>% round(2) * 100, 
+                             "%")) + 
+      
+      theme_light() +
+      theme(panel.grid.minor = element_line(colour = "grey95"), 
+            panel.grid.major = element_line(colour = "grey95"))
+    
+    print(plot)
+    plots.list[[i]] <- plot
+    
+  }
+  return(plots.list)
+  
+  
+}
+
+
+# test the function: 
+changeover.graph(sims)
