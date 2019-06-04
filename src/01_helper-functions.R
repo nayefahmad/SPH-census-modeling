@@ -7,7 +7,7 @@
 
 
 # function definition: 
-census.in.surgery <- function(horizon = 100, 
+census.in.surgery <- function(horizon = 800, 
                            day.number, 
                            surg.type, 
                            num.patients, 
@@ -107,10 +107,10 @@ census.in.surgery <- function(horizon = 100,
 #******************************************************
 # test the function: 
 #******************************************************
-# census.in.surgery(horizon = 200,
-#                   day.number =  5,
+# census.in.surgery(horizon = 650,
+#                   day.number =  600,
 #                   "Ortho",
-#                   num.patients = 1)
+#                   num.patients = 3)
 # 
 # census.in.surgery(horizon = 200,
 #                   day.number =  1,
@@ -248,7 +248,7 @@ repeat.rows <- function(df,
 
 # function definition: 
 simulate.census <- function(iterations = 2, 
-                            horizon = 600, 
+                            horizon = 800, 
                             day.number = df5.full.input.schedule$day.number, 
                             surg.type = as.character(df5.full.input.schedule$surgtype), 
                             num.patients = df5.full.input.schedule$num.sda) {
@@ -299,7 +299,7 @@ simulate.census <- function(iterations = 2,
 
 sim.graphs <- function(sim.list, 
                        ymax = 200, 
-                       xmax = 7*numweeks.param + 14) {
+                       xmax = 7*2*numweeks.param + 14) {
   
   # input: single vector from a list of lots of simulations produced by 
   #     fn simulate.census() 
@@ -327,9 +327,13 @@ sim.graphs <- function(sim.list,
       geom_line(col = "dodgerblue4") +
       
       # mark cooldown and warmup periods: 
-      geom_vline(xintercept = 7*numweeks.param, 
+      geom_vline(xintercept = 7*2*numweeks.param, 
                  col = "firebrick1") + 
       geom_vline(xintercept = warmup.cutoff.day.num, 
+                 col = "firebrick1") + 
+      
+      # mark change from old to new schedule: 
+      geom_vline(xintercept = 7*numweeks.param, 
                  col = "firebrick1") + 
       
       scale_y_continuous(limits = c(0, ymax)) + 

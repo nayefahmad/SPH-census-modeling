@@ -16,7 +16,7 @@ library("magrittr")
 
 # input paramaters: 
 numweeks.param <-  48
-iterations.param <- 10
+iterations.param <- 2
 warmup.cutoff.day.num <- 50
 input.schedule.1 <- "admissions-weekly-schedule_1_pre-diversion.csv"
 input.schedule.2 <- "admissions-weekly-schedule_2_post-diversion.csv"
@@ -45,7 +45,7 @@ sims <- simulate.census(iterations = iterations.param)
 # sim.graphs(sims, ymax = 200)
 
 # save plots in a list: 
-plots.list <- sim.graphs(sims, ymax = 950)
+plots.list <- sim.graphs(sims, ymax = 750)
 
 
 # calculate averages by dow: ------------------------
