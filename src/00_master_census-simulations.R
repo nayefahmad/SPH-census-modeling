@@ -16,7 +16,7 @@ library("magrittr")
 
 # input paramaters: 
 numweeks.param <-  48
-iterations.param <- 15
+iterations.param <- 2
 warmup.cutoff.day.num <- 50
 input.schedule.1 <- "admissions-weekly-schedule_1_pre-diversion.csv"
 input.schedule.2 <- "admissions-weekly-schedule_2_post-diversion.csv"
@@ -49,7 +49,16 @@ plots.list <- sim.graphs(sims, ymax = 750)
 
 
 # examine changeover from pre-intervention to post-intervention: -----
-data.frame(census = sims[[2]]) %>% 
+iteration.num <- 1
+
+pre_mean_census <- sims[[iteration.num]][50:(7*numweeks.param)] %>% mean
+post_mean_census <- sims[[iteration.num]][(7*numweeks.param+1):(7*2*numweeks.param)] %>% mean
+
+post_mean_census/pre_mean_census
+
+
+# plot: 
+data.frame(census = sims[[iteration.num]]) %>% 
   mutate(day = 1:n()) %>%  
   filter(day > 200, day < 500) %>% 
   
@@ -58,6 +67,19 @@ data.frame(census = sims[[2]]) %>%
   geom_point() +
   geom_vline(xintercept = 336, 
              col = "red") + 
+  geom_hline(yintercept = pre_mean_census, 
+             col = "grey70") + 
+  geom_hline(yintercept = post_mean_census, 
+             col = "grey70") + 
+  
+  labs(subtitle = paste0("Mean census pre-intervention: ", 
+                         round(pre_mean_census, 2),  
+                         "\nMean census post-intervention: ", 
+                         round(post_mean_census, 2), 
+                         "\nReduction of ", 
+                         (1 - post_mean_census/pre_mean_census) %>% round(2) * 100, 
+                         "%")) + 
+  
   theme_light() +
   theme(panel.grid.minor = element_line(colour = "grey95"), 
       panel.grid.major = element_line(colour = "grey95"))
