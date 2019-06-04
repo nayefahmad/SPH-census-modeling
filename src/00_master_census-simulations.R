@@ -48,6 +48,23 @@ sims <- simulate.census(iterations = iterations.param)
 plots.list <- sim.graphs(sims, ymax = 750)
 
 
+# examine changeover from pre-intervention to post-intervention: -----
+data.frame(census = sims[[1]]) %>% 
+  mutate(day = 1:n()) %>%  
+  filter(day > 300, day < 400) %>% 
+  
+  ggplot(aes(x = day, y = census)) + 
+  geom_line() + 
+  geom_point() +
+  geom_vline(xintercept = 336, 
+             col = "red") + 
+  theme_light() +
+  theme(panel.grid.minor = element_line(colour = "grey95"), 
+      panel.grid.major = element_line(colour = "grey95"))
+      
+           
+
+
 # calculate averages by dow: ------------------------
 sims.matrix <- do.call(cbind, sims)
 sims.averages <- rowSums(sims.matrix)/iterations.param
