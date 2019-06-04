@@ -45,11 +45,8 @@ num.surg.types <- unique(df1.pre.week.schedule$surgtype) %>% length
 
 # generate schedule for pre-intervention period: 
 df2.pre.full.input.schedule <- repeat.rows(df1.pre.week.schedule, 
-                                       numweeks) %>% 
-      mutate(day.number = lapply(1:(7*numweeks), 
-                                 rep, 
-                                 each = num.surg.types) %>% unlist, 
-             num.sda = as.character(num.sda) %>% as.integer)
+                                           numweeks) %>% 
+      mutate(num.sda = as.character(num.sda) %>% as.integer)
 
 str(df2.pre.full.input.schedule)
 
@@ -80,10 +77,7 @@ num.surg.types <- unique(df3.post.week.schedule$surgtype) %>% length
 # generate schedule for pre-intervention period: 
 df4.post.full.input.schedule <- repeat.rows(df3.post.week.schedule, 
                                             numweeks) %>% 
-   mutate(day.number = lapply(1:(7*numweeks), 
-                              rep, 
-                              each = num.surg.types) %>% unlist, 
-          num.sda = as.character(num.sda) %>% as.integer)
+   mutate(num.sda = as.character(num.sda) %>% as.integer)
 
 str(df4.post.full.input.schedule)
 
@@ -93,7 +87,13 @@ str(df4.post.full.input.schedule)
 # join pre- and post-intervention schedules into a single dataframe: -------
 df5.full.input.schedule <- 
    df2.pre.full.input.schedule %>% 
-   bind_rows(df4.post.full.input.schedule)
+   bind_rows(df4.post.full.input.schedule) %>% 
+   
+   # add col with day number: 
+   mutate(day.number = lapply(1:(7*2*numweeks), 
+                              rep, 
+                              each = num.surg.types) %>% unlist)
+   
 
 str(df5.full.input.schedule)
 
