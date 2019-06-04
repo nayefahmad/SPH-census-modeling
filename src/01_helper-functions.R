@@ -248,7 +248,7 @@ repeat.rows <- function(df,
 
 # function definition: 
 simulate.census <- function(iterations = 2, 
-                            horizon = 800, 
+                            horizon = 1200, 
                             day.number = df5.full.input.schedule$day.number, 
                             surg.type = as.character(df5.full.input.schedule$surgtype), 
                             num.patients = df5.full.input.schedule$num.sda) {

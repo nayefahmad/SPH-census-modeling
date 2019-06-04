@@ -16,7 +16,7 @@ library("magrittr")
 
 # input paramaters: 
 numweeks.param <-  48
-iterations.param <- 2
+iterations.param <- 15
 warmup.cutoff.day.num <- 50
 input.schedule.1 <- "admissions-weekly-schedule_1_pre-diversion.csv"
 input.schedule.2 <- "admissions-weekly-schedule_2_post-diversion.csv"
@@ -49,9 +49,9 @@ plots.list <- sim.graphs(sims, ymax = 750)
 
 
 # examine changeover from pre-intervention to post-intervention: -----
-data.frame(census = sims[[1]]) %>% 
+data.frame(census = sims[[2]]) %>% 
   mutate(day = 1:n()) %>%  
-  filter(day > 300, day < 400) %>% 
+  filter(day > 200, day < 500) %>% 
   
   ggplot(aes(x = day, y = census)) + 
   geom_line() + 
