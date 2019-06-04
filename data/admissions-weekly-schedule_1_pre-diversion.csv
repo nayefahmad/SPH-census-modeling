@@ -1,5 +1,5 @@
 surgtype ,dayofweek,num.sda,num.sdc
-Ortho ,Mon,48,0
+Ortho ,Mon,54,0
 Neuro,Mon,0,0
 Urol,Mon,0,0
 Gyne,Mon,0,0
@@ -9,7 +9,7 @@ Gastro,Mon,0,0
 Otolaryngology ,Mon,0,0
 Plastic,Mon,0,0
 Vascular,Mon,0,0
-Ortho ,Tue,48,0
+Ortho ,Tue,54,0
 Neuro,Tue,0,0
 Urol,Tue,0,0
 Gyne,Tue,0,0
@@ -19,7 +19,7 @@ Gastro,Tue,0,0
 Otolaryngology ,Tue,0,0
 Plastic,Tue,0,0
 Vascular,Tue,0,0
-Ortho ,Wed,48,0
+Ortho ,Wed,54,0
 Neuro,Wed,0,0
 Urol,Wed,0,0
 Gyne,Wed,0,0
@@ -29,7 +29,7 @@ Gastro,Wed,0,0
 Otolaryngology ,Wed,0,0
 Plastic,Wed,0,0
 Vascular,Wed,0,0
-Ortho ,Thu,48,0
+Ortho ,Thu,54,0
 Neuro,Thu,0,0
 Urol,Thu,0,0
 Gyne,Thu,0,0
@@ -39,7 +39,7 @@ Gastro,Thu,0,0
 Otolaryngology ,Thu,0,0
 Plastic,Thu,0,0
 Vascular,Thu,0,0
-Ortho ,Fri,48,0
+Ortho ,Fri,54,0
 Neuro,Fri,0,0
 Urol,Fri,0,0
 Gyne,Fri,0,0
@@ -49,7 +49,7 @@ Gastro,Fri,0,0
 Otolaryngology ,Fri,0,0
 Plastic,Fri,0,0
 Vascular,Fri,0,0
-Ortho ,Sat,48,0
+Ortho ,Sat,33,0
 Neuro,Sat,0,0
 Urol,Sat,0,0
 Gyne,Sat,0,0
@@ -59,7 +59,7 @@ Gastro,Sat,0,0
 Otolaryngology ,Sat,0,0
 Plastic,Sat,0,0
 Vascular,Sat,0,0
-Ortho ,Sun,48,0
+Ortho ,Sun,33,0
 Neuro,Sun,0,0
 Urol,Sun,0,0
 Gyne,Sun,0,0
