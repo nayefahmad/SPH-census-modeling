@@ -49,7 +49,7 @@ plots.list <- sim.graphs(sims, ymax = 750)
 
 
 # examine changeover from pre-intervention to post-intervention: -----
-plots.list.2 <- changeover.graph(sims, xmin = 300, xmax = 600)
+plots.list.2 <- changeover.graph(sims, xmin = 300, xmax = 600) # todo: use geom_segment instead of geom_hline
            
 
 
