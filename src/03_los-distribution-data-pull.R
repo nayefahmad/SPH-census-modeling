@@ -17,27 +17,27 @@ library(lubridate)
 
 # 1) set up database connection: -----------
 cnx <- dbConnect(odbc::odbc(),
-                 dsn = "cnx_denodo_spappcsta001")
+                 dsn = "cnx_SPDBSCSTA001")
 
 vw_admits <- dplyr::tbl(cnx, 
-                        dbplyr::in_schema("publish", 
-                                          "admission_discharge"))
+                        dbplyr::in_schema("ADTCMart.ADTC", 
+                                          "AdmissionDischargeView"))
 
 df1.los <- 
   vw_admits %>% 
-  filter(facility_name == "St. Pauls Hospital", 
-         admission_date_id >= '20180101', 
-         admission_date_id <= '20181231', 
-         encntr_type_class_grp_at_ad == "Inpatient") %>% 
-  select(patient_id, 
-         admit_to_disch_los_elapsed_time_days) %>% 
+  filter(DischargeFacilityLongName == "St. Pauls Hospital", 
+         AdjustedAdmissionDate >= '2018-01-01', 
+         AdjustedDischargeDate <= '2018-12-31', 
+         AccountType %in% c("Inpatient")) %>% 
+  select(PatientId, 
+         LOSDays) %>% 
   collect() %>% 
-  count(admit_to_disch_los_elapsed_time_days) 
+  count(LOSDays) 
 
 
 write_csv(df1.los,
           here::here("results", 
                      "dst", 
-                     "2019-06-03_sph_los-distribution-in-2018.csv"))
+                     "2019-06-05_sph_los-distribution-in-2018.csv"))
              
 
